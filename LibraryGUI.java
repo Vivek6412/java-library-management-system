@@ -49,13 +49,14 @@ public class LibraryGUI {
         buttonPanel.setBackground(new Color(30, 30, 47));
 
         JButton addBtn = new JButton("Add Book");
+        JButton removeBtn = new JButton("Remove Book");
         JButton viewBtn = new JButton("View Books");
         JButton issueBtn = new JButton("Issue Book");
         JButton returnBtn = new JButton("Return Book");
 
         JButton searchBtn = new JButton("Search Book");
 
-        JButton[] buttons = {addBtn, viewBtn, issueBtn, returnBtn, searchBtn};
+        JButton[] buttons = {addBtn, viewBtn, issueBtn, returnBtn, searchBtn, removeBtn};
 
         for (JButton btn : buttons) {
             btn.setBackground(new Color(76, 175, 80));
@@ -69,6 +70,20 @@ public class LibraryGUI {
 
                 public void mouseExited(java.awt.event.MouseEvent evt) {
                     btn.setBackground(new Color(76, 175, 80));
+                }
+            });
+            removeBtn.addActionListener(e -> {
+                try {
+                    int index = Integer.parseInt(bookField.getText()) - 1;
+
+                    if (index >= 0 && index < books.size()) {
+                        books.remove(index);
+                        output.setText("Book removed!");
+                    } else {
+                        output.setText("Invalid index!");
+                    }
+                } catch (Exception ex) {
+                    output.setText("Enter valid index!");
                 }
             });
 
@@ -92,14 +107,20 @@ public class LibraryGUI {
 
         // ADD BOOK
         addBtn.addActionListener(e -> {
-            String titleText = bookField.getText();
-            if (titleText.isEmpty()) {
-                output.setText("Enter book name!");
+
+            String titleText = JOptionPane.showInputDialog("Enter book title:");
+            String authorText = JOptionPane.showInputDialog("Enter author name:");
+
+            if (titleText == null || authorText == null ||
+                titleText.isEmpty() || authorText.isEmpty()) {
+
+                output.setText("Enter valid details!");
                 return;
             }
-            books.add(new Book(titleText));
+
+            books.add(new Book(titleText, authorText));
             output.setText("Book Added!");
-            bookField.setText("");
+
         });
 
         // VIEW BOOKS
@@ -108,7 +129,7 @@ public class LibraryGUI {
             for (int i = 0; i < books.size(); i++) {
                 Book b = books.get(i);
 
-                result += (i + 1) + ". " + b.title;
+                result += (i + 1) + ". " + b.title + " by " + b.author;
 
                 if (b.isIssued) {
                     result += " (Issued to " + b.issuedTo + ", Due: " + b.dueDate + ")";
@@ -173,21 +194,23 @@ public class LibraryGUI {
         });
         // SEARCH BOOK
         searchBtn.addActionListener(e -> {
-            String keyword = bookField.getText().toLowerCase();
-            String result = "";
+        String keyword = bookField.getText().toLowerCase();
+        String result = "";
 
-            for (Book b : books) {
-                if (b.title.toLowerCase().contains(keyword)) {
-                    result += b.title + "\n";
-                }
-            }
+        for (Book b : books) {
+            if (b.title.toLowerCase().contains(keyword) ||
+                b.author.toLowerCase().contains(keyword)) {
 
-            if (result.isEmpty()) {
-                output.setText("Book not found");
-            } else {
-                output.setText("Found:\n" + result);
+                result += b.title + " by " + b.author + "\n";
             }
-        });
+        }
+
+        if (result.isEmpty()) {
+            output.setText("Book not found");
+        } else {
+            output.setText("Found:\n" + result);
+        }
+    });
 
         frame.setVisible(true);
     }

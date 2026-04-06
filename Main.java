@@ -3,12 +3,14 @@ import java.time.LocalDate;
 
 class Book {
     String title;
+    String author;   // NEW
     boolean isIssued;
     String issuedTo;
-    LocalDate dueDate;   // NEW
+    LocalDate dueDate;
 
-    Book(String title) {
+    Book(String title, String author) {
         this.title = title;
+        this.author = author;
         this.isIssued = false;
         this.issuedTo = "";
         this.dueDate = null;
