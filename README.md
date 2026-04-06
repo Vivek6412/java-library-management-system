@@ -1,28 +1,52 @@
 # 📚 Java Library Management System
 
-A professional **Java-based Library Management System** with both **CLI (Command Line Interface)** and **GUI (Swing)**, designed to manage books efficiently with a clean and user-friendly interface.
+A complete **Library Management System** built using **Core Java (OOP)** with both **CLI and GUI (Swing)**.
+This project helps manage books, users, and transactions efficiently while reducing manual work.
 
 ---
 
 ## 🚀 Features
 
-* 📖 Add new books to the library
-* 📋 View all available books
-* 🔍 Search books by name
-* 📦 Issue books
-* 🔄 Return books
-* 📊 Track issued and available books
-* 🖥️ Interactive GUI using Java Swing
-* 💻 CLI version for terminal-based usage
+### 📘 Book Management
+
+* Add new books with title & author
+* Update book details
+* Remove books from system
+* View all books with status
+
+### 👤 User Management
+
+* Register users
+* Issue books to users
+* Track issued books
+
+### 🔄 Transactions
+
+* Issue books with **due date (7 days)**
+* Return books
+* Automatic **fine calculation** for late returns
+
+### 🔍 Search System
+
+* Search books by:
+
+  * Title
+  * Author
+  * Issued user
+
+### 🖥️ Interface
+
+* CLI (Console-based system)
+* GUI (Java Swing-based modern interface)
 
 ---
 
 ## 🛠️ Technologies Used
 
-* Java
-* Swing (GUI Development)
-* ArrayList (Data Storage)
-* OOP Concepts (Classes & Objects)
+* Java (Core Java & OOP concepts)
+* Java Swing (GUI)
+* ArrayList (Data storage)
+* LocalDate API (Date handling)
 
 ---
 
@@ -32,20 +56,21 @@ A professional **Java-based Library Management System** with both **CLI (Command
 
 ![GUI](screenshot.png)
 
+### 💻 CLI Version
+
+![GUI](cli.png)
 ---
 
 ## ▶️ How to Run
 
-### 💻 CLI Version
+### 🔹 CLI Version
 
 ```bash
 javac Main.java
 java Main
 ```
 
----
-
-### 🖥️ GUI Version
+### 🔹 GUI Version
 
 ```bash
 javac LibraryGUI.java
@@ -54,27 +79,21 @@ java LibraryGUI
 
 ---
 
-## 📊 Project Objective
+## 📊 Project Objectives
 
-This project aims to simplify **library operations** by providing an easy-to-use system for managing books, issuing, returning, and tracking availability.
-
----
-
-## 🎯 Key Outcomes
-
-* Understand Java GUI development using Swing
-* Learn Object-Oriented Programming (OOP) concepts
-* Implement real-world system logic
-* Improve problem-solving and coding skills
+* Manage books, users, and transactions
+* Track issued and returned books
+* Reduce manual effort in library management
+* Provide an easy-to-use system
 
 ---
 
 ## 📌 Future Improvements
 
-* Database integration (MySQL)
-* User login system
-* Fine calculation system
-* Web-based version
+* Database integration (MySQL + JDBC)
+* Login system (Admin/User)
+* Export reports (PDF/Excel)
+* Web version (Spring Boot)
 
 ---
 
@@ -84,6 +103,22 @@ This project aims to simplify **library operations** by providing an easy-to-use
 
 ---
 
-## ⭐ Support
+## ⭐ Project Status
 
-If you like this project, don’t forget to ⭐ star the repository!
+✅ Fully Functional
+✅ GUI + CLI Implemented
+✅ All core features completed
+
+---
+
+## 💡 Note
+
+This project demonstrates:
+
+* Object-Oriented Programming (OOP)
+* GUI development using Swing
+* Real-world system design logic
+
+---
+
+⭐ If you like this project, consider giving it a star!
