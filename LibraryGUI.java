@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 class Book {
@@ -106,8 +107,16 @@ public class LibraryGUI {
             String result = "";
             for (int i = 0; i < books.size(); i++) {
                 Book b = books.get(i);
-                result += (i + 1) + ". " + b.title +
-                        (b.isIssued ? " (Issued)" : " (Available)") + "\n";
+
+                result += (i + 1) + ". " + b.title;
+
+                if (b.isIssued) {
+                    result += " (Issued to " + b.issuedTo + ", Due: " + b.dueDate + ")";
+                } else {
+                    result += " (Available)";
+                }
+
+                result += "\n";
             }
             output.setText(result);
         });
@@ -116,9 +125,17 @@ public class LibraryGUI {
         issueBtn.addActionListener(e -> {
             try {
                 int index = Integer.parseInt(bookField.getText()) - 1;
+
+                String user = JOptionPane.showInputDialog("Enter user name:");
+
                 if (index >= 0 && index < books.size()) {
-                    books.get(index).isIssued = true;
-                    output.setText("Book Issued!");
+                    Book b = books.get(index);
+
+                    b.isIssued = true;
+                    b.issuedTo = user;
+                    b.dueDate = LocalDate.now().plusDays(7);  // 7 days limit
+
+                    output.setText("Book issued to " + user + "\nDue Date: " + b.dueDate);
                 }
             } catch (Exception ex) {
                 output.setText("Enter valid index!");
@@ -129,11 +146,26 @@ public class LibraryGUI {
         returnBtn.addActionListener(e -> {
             try {
                 int index = Integer.parseInt(bookField.getText()) - 1;
-                if (index >= 0 && index < books.size()) {
-                    books.get(index).isIssued = false;
 
-                    int fine = (int)(Math.random() * 50); // random fine
-                    output.setText("Book Returned!\nFine: ₹" + fine);
+                if (index >= 0 && index < books.size()) {
+                    Book b = books.get(index);
+
+                    if (b.isIssued) {
+                        LocalDate today = LocalDate.now();
+
+                        int fine = 0;
+
+                        if (today.isAfter(b.dueDate)) {
+                            long daysLate = java.time.temporal.ChronoUnit.DAYS.between(b.dueDate, today);
+                            fine = (int) daysLate * 10;  // ₹10 per day
+                        }
+
+                        b.isIssued = false;
+                        b.issuedTo = "";
+                        b.dueDate = null;
+
+                        output.setText("Book Returned!\nFine: ₹" + fine);
+                    }
                 }
             } catch (Exception ex) {
                 output.setText("Enter valid index!");

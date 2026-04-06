@@ -1,12 +1,17 @@
 import java.util.*;
+import java.time.LocalDate;
 
 class Book {
     String title;
     boolean isIssued;
+    String issuedTo;
+    LocalDate dueDate;   // NEW
 
     Book(String title) {
         this.title = title;
         this.isIssued = false;
+        this.issuedTo = "";
+        this.dueDate = null;
     }
 }
 class User {
