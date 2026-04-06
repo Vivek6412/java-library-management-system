@@ -3,10 +3,10 @@ import java.time.LocalDate;
 
 class Book {
     String title;
-    String author;   // NEW
+    String author;
     boolean isIssued;
     String issuedTo;
-    LocalDate dueDate;
+    java.time.LocalDate dueDate;
 
     Book(String title, String author) {
         this.title = title;
@@ -62,7 +62,10 @@ public class Main {
         System.out.print("Enter book title: ");
         String title = sc.nextLine();
 
-        books.add(new Book(title));
+        System.out.print("Enter author name: ");
+        String author = sc.nextLine();
+
+        books.add(new Book(title, author));
         System.out.println("Book added!");
     }
     static void viewBooks() {
@@ -73,8 +76,9 @@ public class Main {
 
         for (int i = 0; i < books.size(); i++) {
             Book b = books.get(i);
-            System.out.println((i+1) + ". " + b.title +
-                (b.isIssued ? " (Issued)" : " (Available)"));
+            System.out.println((i+1) + ". " + b.title + " by " + b.author +
+                (b.isIssued ? " (Issued to " + b.issuedTo + ", Due: " + b.dueDate + ")" 
+                            : " (Available)"));
         }
     }
     static void registerUser(Scanner sc) {
@@ -88,13 +92,21 @@ public class Main {
         viewBooks();
         System.out.print("Enter book number: ");
         int index = sc.nextInt() - 1;
+        sc.nextLine();
 
         if (index >= 0 && index < books.size()) {
             Book b = books.get(index);
 
             if (!b.isIssued) {
+                System.out.print("Enter user name: ");
+                String user = sc.nextLine();
+
                 b.isIssued = true;
-                System.out.println("Book issued!");
+                b.issuedTo = user;
+                b.dueDate = LocalDate.now().plusDays(7);
+
+                System.out.println("Book issued to " + user);
+                System.out.println("Due date: " + b.dueDate);
             } else {
                 System.out.println("Already issued.");
             }
@@ -111,10 +123,19 @@ public class Main {
             Book b = books.get(index);
 
             if (b.isIssued) {
-                b.isIssued = false;
+                LocalDate today = LocalDate.now();
+                int fine = 0;
 
-                // simple fine logic
-                int fine = new Random().nextInt(50);
+                if (today.isAfter(b.dueDate)) {
+                    long daysLate = java.time.temporal.ChronoUnit.DAYS
+                            .between(b.dueDate, today);
+                    fine = (int) daysLate * 10;
+                }
+
+                b.isIssued = false;
+                b.issuedTo = "";
+                b.dueDate = null;
+
                 System.out.println("Book returned!");
                 System.out.println("Fine: ₹" + fine);
 
@@ -126,16 +147,22 @@ public class Main {
         }
     }
     static void searchBook(Scanner sc) {
-        System.out.print("Enter book name: ");
-        String name = sc.nextLine();
+        System.out.print("Enter keyword: ");
+        String keyword = sc.nextLine().toLowerCase();
+
+        boolean found = false;
 
         for (Book b : books) {
-            if (b.title.toLowerCase().contains(name.toLowerCase())) {
-                System.out.println("Found: " + b.title);
-                return;
+            if (b.title.toLowerCase().contains(keyword) ||
+                b.author.toLowerCase().contains(keyword)) {
+
+                System.out.println("Found: " + b.title + " by " + b.author);
+                found = true;
             }
         }
 
-        System.out.println("Book not found.");
+        if (!found) {
+            System.out.println("Book not found.");
+        }
     }
 }
