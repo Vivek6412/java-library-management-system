@@ -1,7 +1,10 @@
 # 📚 Java Library Management System
 
-A complete **Library Management System** built using **Core Java (OOP)** with both **CLI and GUI (Swing)**.
-This project helps manage books, users, and transactions efficiently while reducing manual work.
+## 📌 Project Overview
+
+This project is a Library Management System built using Core Java and OOP concepts. It is designed to handle book management, user records, and transactions efficiently.
+
+The system includes both a **console-based version (CLI)** and a **GUI version using Java Swing**, providing flexibility in how users interact with the application.
 
 ---
 
@@ -9,10 +12,8 @@ This project helps manage books, users, and transactions efficiently while reduc
 
 ### 📘 Book Management
 
-* Add new books with title & author
-* Update book details
-* Remove books from system
-* View all books with status
+* Add, update, and remove books
+* View all books with availability status
 
 ### 👤 User Management
 
@@ -22,31 +23,27 @@ This project helps manage books, users, and transactions efficiently while reduc
 
 ### 🔄 Transactions
 
-* Issue books with **due date (7 days)**
+* Issue books with a **7-day due date**
 * Return books
 * Automatic **fine calculation** for late returns
 
 ### 🔍 Search System
 
-* Search books by:
-
-  * Title
-  * Author
-  * Issued user
+* Search books by title, author, or issued user
 
 ### 🖥️ Interface
 
-* CLI (Console-based system)
-* GUI (Java Swing-based modern interface)
+* CLI (console-based system)
+* GUI (Java Swing interface)
 
 ---
 
 ## 🛠️ Technologies Used
 
 * Java (Core Java & OOP concepts)
-* Java Swing (GUI)
-* ArrayList (Data storage)
-* LocalDate API (Date handling)
+* Java Swing (GUI development)
+* ArrayList (in-memory data storage)
+* LocalDate API (date handling)
 
 ---
 
@@ -58,7 +55,8 @@ This project helps manage books, users, and transactions efficiently while reduc
 
 ### 💻 CLI Version
 
-![GUI](cli.png)
+![CLI](cli.png)
+
 ---
 
 ## ▶️ How to Run
@@ -79,21 +77,12 @@ java LibraryGUI
 
 ---
 
-## 📊 Project Objectives
-
-* Manage books, users, and transactions
-* Track issued and returned books
-* Reduce manual effort in library management
-* Provide an easy-to-use system
-
----
-
 ## 📌 Future Improvements
 
-* Database integration (MySQL + JDBC)
-* Login system (Admin/User)
-* Export reports (PDF/Excel)
-* Web version (Spring Boot)
+* Database integration using MySQL and JDBC
+* User authentication (Admin/User login)
+* Persistent data storage
+* Web-based version of the system
 
 ---
 
@@ -105,20 +94,6 @@ java LibraryGUI
 
 ## ⭐ Project Status
 
-✅ Fully Functional
-✅ GUI + CLI Implemented
-✅ All core features completed
-
----
-
-## 💡 Note
-
-This project demonstrates:
-
-* Object-Oriented Programming (OOP)
-* GUI development using Swing
-* Real-world system design logic
-
----
-
-⭐ If you like this project, consider giving it a star!
+✔ Fully functional
+✔ CLI + GUI implemented
+✔ Core features completed
