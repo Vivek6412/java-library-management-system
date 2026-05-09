@@ -1,10 +1,10 @@
-# 📚 Java Library Management System
+# 📚 Java Library Management System (CLI-Based)
 
 ## 📌 Project Overview
 
-This project is a Library Management System built using Core Java and OOP concepts. It is designed to handle book management, user records, and transactions efficiently.
+Java Library Management System is a console-based application developed using Core Java and Object-Oriented Programming (OOP) concepts. The project is designed to manage books, users, and library transactions in a simple and efficient way.
 
-The system includes both a **console-based version (CLI)** and a **GUI version using Java Swing**, providing flexibility in how users interact with the application.
+This application allows users to add books, register users, issue and return books, search books, and calculate fines for late returns through a Command Line Interface (CLI).
 
 ---
 
@@ -12,88 +12,95 @@ The system includes both a **console-based version (CLI)** and a **GUI version u
 
 ### 📘 Book Management
 
-* Add, update, and remove books
-* View all books with availability status
+- Add new books
+- View all books
+- Track available and issued books
 
 ### 👤 User Management
 
-* Register users
-* Issue books to users
-* Track issued books
+- Register library users
+- Issue books to users
+- Maintain issued book records
 
 ### 🔄 Transactions
 
-* Issue books with a **7-day due date**
-* Return books
-* Automatic **fine calculation** for late returns
+- Issue books with due dates
+- Return books
+- Automatic fine calculation for late returns
 
-### 🔍 Search System
+### 🔍 Search Functionality
 
-* Search books by title, author, or issued user
+- Search books by:
+  - Title
+  - Author name
 
-### 🖥️ Interface
+### 💻 CLI Interface
 
-* CLI (console-based system)
-* GUI (Java Swing interface)
+- Simple and user-friendly console-based menu system
 
 ---
 
 ## 🛠️ Technologies Used
 
-* Java (Core Java & OOP concepts)
-* Java Swing (GUI development)
-* ArrayList (in-memory data storage)
-* LocalDate API (date handling)
+- Java
+- Core Java OOP Concepts
+- ArrayList
+- LocalDate API
+- Command Line Interface (CLI)
 
 ---
 
-## 📸 Screenshots
+## 📸 Screenshot
 
-### 🖥️ GUI Interface
-
-![GUI](screenshot.png)
-
-### 💻 CLI Version
+### 💻 CLI Output
 
 ![CLI](cli.png)
 
 ---
 
-## ▶️ How to Run
+## ▶️ How to Run the Project
 
-### 🔹 CLI Version
+### 1️⃣ Compile the Program
 
 ```bash
 javac Main.java
-java Main
 ```
 
-### 🔹 GUI Version
+### 2️⃣ Run the Program
 
 ```bash
-javac LibraryGUI.java
-java LibraryGUI
+java Main
 ```
 
 ---
 
-## 📌 Future Improvements
+## 📂 Project Structure
 
-* Database integration using MySQL and JDBC
-* User authentication (Admin/User login)
-* Persistent data storage
-* Web-based version of the system
+```text
+Library-Management-System/
+│
+├── Main.java
+├── README.md
+├── cli.png
+└── .gitignore
+```
+
+---
+
+## 📊 Functionalities
+
+The application allows users to:
+
+- Manage library books
+- Register users
+- Issue and return books
+- Track due dates
+- Calculate fines for delayed returns
+- Search books quickly
+- View availability status of books
 
 ---
 
 ## 👨‍💻 Author
 
 **Vivek Gupta**
-
----
-
-## ⭐ Project Status
-
-✔ Fully functional
-✔ CLI + GUI implemented
-✔ Core features completed
